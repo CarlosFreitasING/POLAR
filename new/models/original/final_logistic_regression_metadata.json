@@ -1,0 +1,34 @@
+{
+  "model_type": "LogisticRegression",
+  "validation": "LOSO",
+  "training_workers": [
+    "W00",
+    "W01",
+    "W02",
+    "W03",
+    "W04"
+  ],
+  "feature_columns": [
+    "ECG_energy_z",
+    "ECG_mean_z",
+    "ECG_missing_peaks_z",
+    "ECG_range_z",
+    "ECG_samp_ent_z",
+    "ECG_std_z",
+    "HR_max_z",
+    "HR_mean_z",
+    "HR_min_z",
+    "RMSSD_z",
+    "SDNN_z",
+    "pNN50_z"
+  ],
+  "feature_count": 12,
+  "labels": [
+    "Low",
+    "Medium",
+    "High"
+  ],
+  "p33_train_all_workers": -0.23777555714980333,
+  "p66_train_all_workers": 1.7205376495748248,
+  "target_column": "FatigueIndex"
+}
