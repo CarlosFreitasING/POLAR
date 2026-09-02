@@ -12,7 +12,11 @@ ROOT_DIR = Path(__file__).resolve().parent
 WINDOW_SECONDS = 60
 SAMPLE_RATE_HZ = 130
 BASELINE_WINDOW_COUNT = 15
-WORKER_NAMES = [f"W{worker_number:02d}" for worker_number in range(5)]
+WORKER_NAMES = sorted(
+    worker_dir.name
+    for worker_dir in ROOT_DIR.glob("W[0-9][0-9]")
+    if worker_dir.is_dir()
+)
 
 FEATURE_HEADER = [
     "UNIX Timestamp",
