@@ -6,7 +6,12 @@
     "W01",
     "W02",
     "W03",
-    "W04"
+    "W04",
+    "W05",
+    "W06",
+    "W07",
+    "W08",
+    "W09"
   ],
   "feature_columns": [
     "ECG_energy_z",
@@ -34,17 +39,19 @@
   ],
   "class_weight": "balanced",
   "C_grid": [
+    0.01,
+    0.1,
+    1,
+    10,
     100.0,
     300.0,
     1000.0,
     3000.0,
-    10000.0,
-    30000.0,
-    100000.0
+    10000.0
   ],
-  "selected_C_final": 100000.0,
-  "p33_train_all_workers": -0.23777555714980333,
-  "p66_train_all_workers": 1.7205376495748248,
+  "selected_C_final": 3000.0,
+  "p33_train_all_workers": -0.27457982647895124,
+  "p66_train_all_workers": 1.587283997637409,
   "target_column": "FatigueIndex",
   "temporal_features": [
     "HR_mean_ultimos_5min_z",

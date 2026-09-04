@@ -1,6 +1,6 @@
 {
-  "model_type": "LogisticRegression",
-  "validation": "LOSO_with_inner_C_search",
+  "model_type": "XGBClassifier",
+  "validation": "LOSO_with_inner_XGBoost_search",
   "training_workers": [
     "W00",
     "W01",
@@ -10,7 +10,8 @@
     "W05",
     "W06",
     "W07",
-    "W08"
+    "W08",
+    "W09"
   ],
   "feature_columns": [
     "ECG_energy_z",
@@ -36,17 +37,34 @@
     "Medium",
     "High"
   ],
-  "class_weight": "balanced",
-  "C_grid": [
-    100.0,
-    300.0,
-    1000.0,
-    3000.0,
-    10000.0
-  ],
-  "selected_C_final": 3000.0,
-  "p33_train_all_workers": -0.2305857515972743,
-  "p66_train_all_workers": 1.740650050089328,
+  "preprocessing": "SimpleImputer(strategy=median), applied before ONNX inference",
+  "xgb_param_grid": {
+    "classifier__n_estimators": [
+      100,
+      200,
+      300,
+      500
+    ],
+    "classifier__max_depth": [
+      3,
+      5,
+      7,
+      9
+    ],
+    "classifier__learning_rate": [
+      0.1,
+      0.2,
+      0.5,
+      0.8
+    ]
+  },
+  "selected_params_final": {
+    "learning_rate": 0.2,
+    "max_depth": 3,
+    "n_estimators": 300
+  },
+  "p33_train_all_workers": -0.27457982647895124,
+  "p66_train_all_workers": 1.587283997637409,
   "target_column": "FatigueIndex",
   "temporal_features": [
     "HR_mean_ultimos_5min_z",

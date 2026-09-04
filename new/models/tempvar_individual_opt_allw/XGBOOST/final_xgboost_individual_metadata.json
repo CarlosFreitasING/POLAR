@@ -1,0 +1,116 @@
+{
+  "model_type": "XGBClassifier",
+  "validation": "LOSO_with_individual_worker_labels_and_inner_XGBoost_search",
+  "training_workers": [
+    "W00",
+    "W01",
+    "W02",
+    "W03",
+    "W04",
+    "W05",
+    "W06",
+    "W07",
+    "W08",
+    "W09"
+  ],
+  "feature_columns": [
+    "ECG_energy_z",
+    "ECG_mean_z",
+    "ECG_missing_peaks_z",
+    "ECG_range_z",
+    "ECG_samp_ent_z",
+    "ECG_std_z",
+    "HR_max_z",
+    "HR_mean_z",
+    "HR_min_z",
+    "RMSSD_z",
+    "SDNN_z",
+    "pNN50_z",
+    "HR_mean_ultimos_5min_z",
+    "cambio_HR_vs_baseline_z",
+    "tendencia_HR_z",
+    "cambio_RMSSD_z"
+  ],
+  "feature_count": 16,
+  "labels": [
+    "Low",
+    "Medium",
+    "High"
+  ],
+  "preprocessing": "SimpleImputer(strategy=median), applied before ONNX inference",
+  "xgb_param_grid": {
+    "classifier__n_estimators": [
+      100,
+      200,
+      300,
+      500
+    ],
+    "classifier__max_depth": [
+      3,
+      5,
+      7,
+      9
+    ],
+    "classifier__learning_rate": [
+      0.1,
+      0.2,
+      0.5,
+      0.8
+    ]
+  },
+  "selected_params_final": {
+    "learning_rate": 0.2,
+    "max_depth": 7,
+    "n_estimators": 200
+  },
+  "target_definition": "P33/P66 calculados individualmente para cada trabajador",
+  "target_column": "FatigueLevel derived from FatigueIndex",
+  "worker_percentiles": {
+    "W00": {
+      "p33": -4.910791407727056,
+      "p66": -2.404562131467878
+    },
+    "W01": {
+      "p33": 0.19857741939524748,
+      "p66": 1.9952807675528523
+    },
+    "W02": {
+      "p33": 0.15869861286917653,
+      "p66": 1.8951128189329092
+    },
+    "W03": {
+      "p33": 2.64758366326375,
+      "p66": 6.383633710342336
+    },
+    "W04": {
+      "p33": -0.665956528377168,
+      "p66": -0.26155828390214836
+    },
+    "W05": {
+      "p33": -0.18718743181786043,
+      "p66": 1.001663500738519
+    },
+    "W06": {
+      "p33": -2.177750214358166,
+      "p66": 0.3441632484020298
+    },
+    "W07": {
+      "p33": 1.3217270148369618,
+      "p66": 2.7331787728591372
+    },
+    "W08": {
+      "p33": -0.7557044577585422,
+      "p66": -0.0781337120998759
+    },
+    "W09": {
+      "p33": 0.10818083785184121,
+      "p66": 2.2993790068870523
+    }
+  },
+  "temporal_features": [
+    "HR_mean_ultimos_5min_z",
+    "cambio_HR_vs_baseline_z",
+    "tendencia_HR_z",
+    "cambio_RMSSD_z"
+  ]
+}
