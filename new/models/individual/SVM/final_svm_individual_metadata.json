@@ -1,0 +1,68 @@
+{
+  "model_type": "SVC",
+  "validation": "LOSO_individual_worker_percentiles_with_inner_svm_search",
+  "training_workers": [
+    "W00",
+    "W01",
+    "W02",
+    "W03",
+    "W04",
+    "W05",
+    "W06",
+    "W07",
+    "W08",
+    "W09"
+  ],
+  "feature_columns": [
+    "ECG_energy_z",
+    "ECG_mean_z",
+    "ECG_missing_peaks_z",
+    "ECG_range_z",
+    "ECG_samp_ent_z",
+    "ECG_std_z",
+    "HR_max_z",
+    "HR_mean_z",
+    "HR_min_z",
+    "RMSSD_z",
+    "SDNN_z",
+    "pNN50_z",
+    "HR_mean_ultimos_5min_z",
+    "cambio_HR_vs_baseline_z",
+    "tendencia_HR_z",
+    "cambio_RMSSD_z"
+  ],
+  "feature_count": 16,
+  "labels": [
+    "Low",
+    "Medium",
+    "High"
+  ],
+  "label_definition": "P33/P66 calculated independently for each worker over the full FatigueIndex record",
+  "preprocessing": "SimpleImputer(strategy=median) + StandardScaler, included in the exported pipeline",
+  "svm_param_grid": {
+    "classifier__C": [
+      0.1,
+      1,
+      10,
+      100,
+      500
+    ],
+    "classifier__gamma": [
+      "scale",
+      0.01,
+      0.1,
+      0.5
+    ],
+    "classifier__kernel": [
+      "rbf",
+      "linear"
+    ]
+  },
+  "selected_params_final": {
+    "C": 500,
+    "gamma": 0.5,
+    "kernel": "rbf"
+  },
+  "target_column": "FatigueIndex",
+  "target_label_column": "FatigueLevel"
+}

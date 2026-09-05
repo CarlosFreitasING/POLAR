@@ -1,0 +1,56 @@
+{
+  "model_type": "LogisticRegression",
+  "validation": "LOSO_individual_worker_percentiles_with_inner_C_search",
+  "training_workers": [
+    "W00",
+    "W01",
+    "W02",
+    "W03",
+    "W04",
+    "W05",
+    "W06",
+    "W07",
+    "W08",
+    "W09"
+  ],
+  "feature_columns": [
+    "ECG_energy_z",
+    "ECG_mean_z",
+    "ECG_missing_peaks_z",
+    "ECG_range_z",
+    "ECG_samp_ent_z",
+    "ECG_std_z",
+    "HR_max_z",
+    "HR_mean_z",
+    "HR_min_z",
+    "RMSSD_z",
+    "SDNN_z",
+    "pNN50_z",
+    "HR_mean_ultimos_5min_z",
+    "cambio_HR_vs_baseline_z",
+    "tendencia_HR_z",
+    "cambio_RMSSD_z"
+  ],
+  "feature_count": 16,
+  "labels": [
+    "Low",
+    "Medium",
+    "High"
+  ],
+  "label_definition": "P33/P66 calculated independently for each worker over the full FatigueIndex record",
+  "class_weight": "balanced",
+  "C_grid": [
+    0.01,
+    0.1,
+    1,
+    10,
+    100.0,
+    300.0,
+    1000.0,
+    3000.0,
+    10000.0
+  ],
+  "selected_C_final": 100.0,
+  "target_column": "FatigueIndex",
+  "target_label_column": "FatigueLevel"
+}

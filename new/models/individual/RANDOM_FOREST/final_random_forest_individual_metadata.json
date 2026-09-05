@@ -1,0 +1,68 @@
+{
+  "model_type": "RandomForestClassifier",
+  "validation": "LOSO_individual_worker_percentiles_with_inner_random_forest_search",
+  "training_workers": [
+    "W00",
+    "W01",
+    "W02",
+    "W03",
+    "W04",
+    "W05",
+    "W06",
+    "W07",
+    "W08",
+    "W09"
+  ],
+  "feature_columns": [
+    "ECG_energy_z",
+    "ECG_mean_z",
+    "ECG_missing_peaks_z",
+    "ECG_range_z",
+    "ECG_samp_ent_z",
+    "ECG_std_z",
+    "HR_max_z",
+    "HR_mean_z",
+    "HR_min_z",
+    "RMSSD_z",
+    "SDNN_z",
+    "pNN50_z",
+    "HR_mean_ultimos_5min_z",
+    "cambio_HR_vs_baseline_z",
+    "tendencia_HR_z",
+    "cambio_RMSSD_z"
+  ],
+  "feature_count": 16,
+  "labels": [
+    "Low",
+    "Medium",
+    "High"
+  ],
+  "label_definition": "P33/P66 calculated independently for each worker over the full FatigueIndex record",
+  "preprocessing": "SimpleImputer(strategy=median), included in the exported pipeline",
+  "rf_param_grid": {
+    "classifier__n_estimators": [
+      100,
+      200,
+      300,
+      500
+    ],
+    "classifier__max_depth": [
+      null,
+      10,
+      20,
+      30
+    ],
+    "classifier__min_samples_leaf": [
+      1,
+      2,
+      4
+    ]
+  },
+  "selected_params_final": {
+    "max_depth": 20,
+    "min_samples_leaf": 1,
+    "n_estimators": 100
+  },
+  "target_column": "FatigueIndex",
+  "target_label_column": "FatigueLevel"
+}
